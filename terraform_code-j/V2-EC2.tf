@@ -6,7 +6,7 @@ resource "aws_instance" "demo-server" {
     ami = "ami-051f8a213df8bc089"
     instance_type = "t2.micro"
     key_name = "dpp"
-    security_groups = [ "demo_sg" ]
+    security_groups = [ "demo-sg" ]
 }
 
 resource "aws_security_group" "demo-sg" {
@@ -26,6 +26,7 @@ resource "aws_security_group" "demo-sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = [ "0.0.0.0/0" ]
+    ipv6_cidr_blocks = ["::/0"]
     }
 
   tags   = {
