@@ -4,13 +4,15 @@
   tasks: 
   - name: add jenkins key 
     rpm_key: 
-      url:  https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+      key:  https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
       state: present 
 
   - name: add jenkins repo 
-    yum_repository: 
-      repo: https://pkg.jenkins.io/redhat-stable/jenkins.repo
-      state: present 
+    yum_repository:
+      name: jenkins
+      baseurl: http://pkg.jenkins.io/redhat-stable
+      description: Jenkins LTS Repository
+      gpgcheck: yes
 
   - name: install java 
     dnf: 
